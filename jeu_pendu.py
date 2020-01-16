@@ -6,7 +6,7 @@ from fonction_pendu import cacher_mot
 from mots_pendu import mots
 
     
-nombre_essais = 10
+nombre_essais = 1
 
 essais = 0
 
@@ -37,4 +37,21 @@ while essais < nombre_essais :
     essais_restant = nombre_essais - essais 
     print(f"Il vous reste {essais_restant} essais !")
     if essais == nombre_essais :
-        print(f"Perdu ! le mot mystère était : '{mot}', retentez votre chance !")
+        print(f"Perdu ! le mot mystère était : '{mot}'!")
+        choix = input("Souhaitez-vous retentez votre chance ? o/n ")
+        while choix :
+            if choix == "o":
+                # on réinitialise le jeu et on sort de la boucle
+                mot = choisir_mot()
+                essais = 0
+                lettres_trouvees = []
+                lettres_utilisees = []
+                break
+            elif choix == "n":
+                print("A bientôt :)")
+                exit()
+            else :
+                # on réaffiche le message jusqu'a ce que l'internaute effectue une saisie valide
+                print("Veuillez saisir 'o' ou 'n'")
+                choix = input("Souhaitez-vous retentez votre chance ? o/n ")
+        
